@@ -31,7 +31,7 @@ def normalize(value, real_min, real_max, clean_min, clean_max):
 
 # Define the model name
 model_name = "heart_disease_model"
-'''
+
 # Create an MLflow client
 client = MlflowClient()
 
@@ -63,10 +63,6 @@ def load_model_safely(model_name):
 
 # Call the function to load the model
 model = load_model_safely("heart_disease_model")
-'''
-model_uri = f"models:/{model_name}/latest"  # Replace with your model name
-model = mlflow.pyfunc.load_model(model_uri)
-
 
 st.title("Heart Disease Prediction")
 
