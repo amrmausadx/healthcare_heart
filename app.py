@@ -31,39 +31,7 @@ def normalize(value, real_min, real_max, clean_min, clean_max):
 
 # Define the model name
 model_name = "heart_disease_model"
-'''
-# Create an MLflow client
-client = MlflowClient()
 
-# Function to load the model safely
-def load_model_safely(model_name):
-    try:
-        # Get registered model details
-        model_details = client.get_registered_model(model_name)
-        
-        # Filter for valid stages
-        valid_versions = [
-            version for version in model_details.latest_versions
-            if version.current_stage in ["None", "Staging", "Production"]
-        ]
-        
-        if not valid_versions:
-            st.error("No valid model versions found.")
-            return None
-        
-        # Load the latest valid model version
-        latest_version = valid_versions[0]
-        model_uri = f"models:/{model_name}/{latest_version.version}"
-        model = mlflow.pyfunc.load_model(model_uri)
-        return model
-
-    except Exception as e:
-        st.error(f"An error occurred while loading the model: {str(e)}")
-        return None
-
-# Call the function to load the model
-model = load_model_safely("heart_disease_model")
-'''
 model_uri = f"models:/{model_name}/latest"  # Replace with your model name
 model = mlflow.pyfunc.load_model(model_uri)
 
