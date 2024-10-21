@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1729517032489
+current_stage: None
+description: null
+last_updated_timestamp: 1729517032489
+name: heart_disease_model
+run_id: d4b151e9fe72470baa58a02268db00ae
+run_link: null
+source: file:///e:/Depi%20-%20P4%20-%20HealthCare/mlruns/0/d4b151e9fe72470baa58a02268db00ae/artifacts/models/heart_disease_model
+status: READY
+status_message: null
+storage_location: file:///e:/Depi%20-%20P4%20-%20HealthCare/mlruns/0/d4b151e9fe72470baa58a02268db00ae/artifacts/models/heart_disease_model
+user_id: null
+version: 1
