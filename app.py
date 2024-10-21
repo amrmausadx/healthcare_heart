@@ -1,8 +1,6 @@
 import pandas as pd
-import mlflow
-import mlflow.pyfunc
+import joblib  # Use joblib to load the pickle file
 import streamlit as st
-from mlflow.tracking import MlflowClient
 
 # Load the real and clean datasets
 real_data = pd.read_csv('heart.csv')
@@ -29,12 +27,8 @@ thal_min, thal_max = real_data['thal'].min(), real_data['thal'].max()
 def normalize(value, real_min, real_max, clean_min, clean_max):
     return (value - real_min) / (real_max - real_min) * (clean_max - clean_min) + clean_min
 
-# Define the model name
-model_name = "heart_disease_model"
-
-model_uri = f"models:/{model_name}/latest"  # Replace with your model name
-model = mlflow.pyfunc.load_model(model_uri)
-
+# Load the model from the pkl file
+model = joblib.load('model.pkl')  # Load the model here
 
 st.title("Heart Disease Prediction")
 
@@ -51,7 +45,7 @@ exang = st.number_input(f"Exercise Induced Angina (0 = No, 1 = Yes)", min_value=
 oldpeak = st.number_input(f"Oldpeak (Min: {oldpeak_min}, Max: {oldpeak_max})", min_value=float(oldpeak_min), max_value=float(oldpeak_max), value=float(oldpeak_min))
 slope = st.number_input(f"Slope of the Peak Exercise ST Segment (Min: {slope_min}, Max: {slope_max})", min_value=int(slope_min), max_value=int(slope_max), value=int(slope_min))
 ca = st.number_input(f"Number of Major Vessels Colored by Fluoroscopy (Min: {ca_min}, Max: {ca_max})", min_value=int(ca_min), max_value=int(ca_max), value=int(ca_min))
-thal = st.number_input(f"Thalassemia (1 = Normal, 2 = Fixed Defect, 3 = Reversible Defect)", min_value=int(thal_min), max_value=int(thal_max), value=1)#int(thal_min))
+thal = st.number_input(f"Thalassemia (1 = Normal, 2 = Fixed Defect, 3 = Reversible Defect)", min_value=int(thal_min), max_value=int(thal_max), value=1) #int(thal.min()))
 
 if st.button("Predict"):
     try:
