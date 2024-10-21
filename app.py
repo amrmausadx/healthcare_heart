@@ -16,7 +16,7 @@ thalach_min, thalach_max = real_data['thalach'].min(), real_data['thalach'].max(
 oldpeak_min, oldpeak_max = real_data['oldpeak'].min(), real_data['oldpeak'].max()
 
 # Additional features that need to be included
-sex_min, sex_max = real_data['sex'].min(), real_data['sex'].max()
+sex_min, sex_max = real_data['sex'].min(), real_data['sex'].max() 
 cp_min, cp_max = real_data['cp'].min(), real_data['cp'].max()
 fbs_min, fbs_max = real_data['fbs'].min(), real_data['fbs'].max()
 restecg_min, restecg_max = real_data['restecg'].min(), real_data['restecg'].max()
